@@ -82,51 +82,12 @@ A: Not really. Check [iostindex.com](https://iostindex.com) for better alternati
 
 **Q: What's the difference from the original LVS-Gateway?**  
 A: This fork adds CYD display support with graphical interface, improved web installer, and various bug fixes.
-
-## 🛠️ Development
-
-### Building Locally
-
-```bash
-# Install PlatformIO
-pip install platformio
-
-# Build for ESP32
-platformio run -e esp32dev
-
-# Build for ESP32-S3
-platformio run -e esp32s3
-
-# Generate web installer files
-./generate_merge_firmware_command.py esp32dev esp32s3 | bash
-./generate_esp_web_tools.py
-```
-
-### Project Structure
-
-```
-├── src/
-│   ├── main.cpp              # Main application with display code
-│   ├── bluetooth_service.*   # BLE initialization
-│   ├── lovense.*            # Lovense protocol implementation
-│   └── muse.*               # MuSE/LoveSpouse protocol
-├── web/
-│   ├── index.html           # Web installer UI
-│   └── firmware/            # Generated firmware binaries
-├── platformio.ini           # Build configuration
-└── generate_*.py            # Build automation scripts
-```
-
 ## 🙏 Credits
 
-- Forked from [WanhedaNC/lvs-gateway](https://github.com/WanhedaNC/lvs-gateway)
+- Forked from [IngeniousKink/LVS-Gateway](https://github.com/IngeniousKink/LVS-Gateway)
 - Original concept and protocol implementation
 - CYD display support and UI improvements by n0rule
 
 ## 📄 License
 
 This project inherits the license from the original LVS-Gateway project.
-
-## ⚠️ Disclaimer
-
-This project is for educational purposes. Use responsibly and ensure compliance with local regulations.
