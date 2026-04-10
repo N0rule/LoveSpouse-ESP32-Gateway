@@ -1,2 +1,19 @@
 .pio
 .vscode
+
+# Generated web installer files
+web/esp-webtools-manifest.json
+web/firmware/*.bin
+!web/firmware/.keep
+
+# Python cache
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.Python
+
+# Build artifacts
+*.elf
+*.map
+merge_firmware.bash

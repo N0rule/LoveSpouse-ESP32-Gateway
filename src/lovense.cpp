@@ -43,7 +43,7 @@ std::string generate_response(const std::string& command) {
     } else if (command.find("Vibrate:") == 0) {
         return set_vibration_speed(command);
     } else if (command == "PowerOff;") {
-        return set_vibration_speed(0);
+        return set_vibration_speed("Vibrate:0;");
     } else {
         return "OK;";
     }
