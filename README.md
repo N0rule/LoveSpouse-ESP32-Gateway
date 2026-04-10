@@ -1,4 +1,5 @@
 # LoveSpouse-ESP32-Gateway
+![Setup Image](images\loveSpouse_Gateway.jpg)
 
 ESP32/CYD firmware that translates Lovense BLE protocol to control MuSE, LoveSpouse, and Leten toys. Features a graphical interface for CYD (Cheap Yellow Display) devices.
 
@@ -85,8 +86,6 @@ A: This fork adds CYD display support with graphical interface, improved web ins
 ## 🙏 Credits
 
 - Forked from [IngeniousKink/LVS-Gateway](https://github.com/IngeniousKink/LVS-Gateway)
-- Original concept and protocol implementation
-- CYD display support and UI improvements by n0rule
 
 ## 📄 License
 
