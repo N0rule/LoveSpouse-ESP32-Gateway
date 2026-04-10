@@ -1,0 +1,16 @@
+{
+  "name": "N0rule/LoveSpouse-ESP32-Gateway",
+  "version": "0.0.2",
+  "funding_url": "https://github.com/N0rule/LoveSpouse-ESP32-Gateway/contributors",
+  "builds": [
+    {
+      "chipFamily": "ESP32",
+      "parts": [
+        {
+          "path": "firmware/N0rule_LoveSpouse-ESP32-Gateway_b2_esp32.bin",
+          "offset": 0
+        }
+      ]
+    }
+  ]
+}
