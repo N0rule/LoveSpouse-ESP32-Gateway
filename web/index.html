@@ -1,182 +1,158 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>LoveSpouse Gateway Web Installer</title>
-  <script type="module" src="https://unpkg.com/esp-web-tools@9.4.0/dist/web/install-button.js?module"></script>
-  <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
+    <!-- Basic Page Needs -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LoveSpouse ESP32 Gateway - Web Flasher</title>
+    <meta name="description" content="ESP32 firmware that translates Lovense BLE protocol to control MuSE, LoveSpouse, and Leten toys. Flash directly from your browser.">
+    <meta name="author" content="N0rule">
+    <meta name="keywords" content="ESP32, LoveSpouse, Lovense, BLE, firmware, web flasher, MuSE, Leten">
 
-    body {
-      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
-      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-      min-height: 100vh;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      padding: 20px;
-    }
+    <!-- Favicons -->
+    <link rel="icon" href="https://n0rule.is-a.dev/images/favicons/favicon.ico" type="image/x-icon">
+    <link rel="apple-touch-icon" sizes="180x180" href="https://n0rule.is-a.dev/images/favicons/favicon_apple.png">
 
-    .container {
-      background: white;
-      border-radius: 16px;
-      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
-      max-width: 600px;
-      width: 100%;
-      padding: 40px;
-    }
+    <!-- Open Graph -->
+    <meta property="og:title" content="LoveSpouse ESP32 Gateway">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://n0rule.is-a.dev/LoveSpouse-ESP32-Gateway/">
+    <meta property="og:description" content="ESP32 firmware that translates Lovense BLE protocol to control MuSE, LoveSpouse, and Leten toys">
+    <meta property="og:site_name" content="LoveSpouse ESP32 Gateway">
 
-    h1 {
-      color: #333;
-      font-size: 2em;
-      margin-bottom: 10px;
-      text-align: center;
-    }
+    <!-- Theme color -->
+    <meta name="theme-color" content="#8839ef">
 
-    .subtitle {
-      color: #666;
-      text-align: center;
-      margin-bottom: 30px;
-      font-size: 1.1em;
-    }
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="./style.css">
 
-    .info-box {
-      background: #f8f9fa;
-      border-left: 4px solid #667eea;
-      padding: 15px;
-      margin-bottom: 25px;
-      border-radius: 4px;
-    }
+    <!-- Theme Script (prevent flicker) -->
+    <script>
+        (function() {
+            const theme = localStorage.getItem('theme') || 'dark';
+            document.documentElement.setAttribute('data-theme', theme);
+        })();
+    </script>
 
-    .info-box h3 {
-      color: #333;
-      margin-bottom: 10px;
-      font-size: 1.1em;
-    }
-
-    .info-box ul {
-      margin-left: 20px;
-      color: #555;
-      line-height: 1.8;
-    }
-
-    .info-box p {
-      color: #555;
-      line-height: 1.6;
-      margin-bottom: 8px;
-    }
-
-    .install-section {
-      text-align: center;
-      margin: 30px 0;
-    }
-
-    esp-web-install-button {
-      display: inline-block;
-      margin: 20px 0;
-    }
-
-    .warning {
-      background: #fff3cd;
-      border-left: 4px solid #ffc107;
-      padding: 15px;
-      margin-top: 25px;
-      border-radius: 4px;
-      color: #856404;
-    }
-
-    .footer {
-      text-align: center;
-      margin-top: 30px;
-      padding-top: 20px;
-      border-top: 1px solid #e0e0e0;
-      color: #666;
-      font-size: 0.9em;
-    }
-
-    .footer a {
-      color: #667eea;
-      text-decoration: none;
-    }
-
-    .footer a:hover {
-      text-decoration: underline;
-    }
-
-    .supported-devices {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-      gap: 10px;
-      margin-top: 15px;
-    }
-
-    .device-badge {
-      background: #e8eaf6;
-      padding: 8px 12px;
-      border-radius: 6px;
-      text-align: center;
-      font-size: 0.9em;
-      color: #5c6bc0;
-      font-weight: 500;
-    }
-  </style>
+    <!-- ESP Web Tools -->
+    <script type="module" src="https://unpkg.com/esp-web-tools@9.4.0/dist/web/install-button.js?module"></script>
+    
+    <!-- Scripts -->
+    <script src="./script.js" defer></script>
 </head>
-
 <body>
-  <div class="container">
-    <h1>🎮 LoveSpouse Gateway Installer</h1>
-    <p class="subtitle">Flash your ESP32 device directly from your browser</p>
+    <!-- Navigation -->
+    <nav class="nav">
+        <div class="nav-container">
+            <a href="#" class="nav-logo">LoveSpouse Gateway</a>
+            <div class="nav-links">
+                <a href="#about">About</a>
+                <a href="#features">Features</a>
+                <a href="#install">Install</a>
+                <a href="https://github.com/N0rule/LoveSpouse-ESP32-Gateway" target="_blank">GitHub</a>
+            </div>
+            <button class="theme-toggle" aria-label="Toggle theme">
+                <span class="theme-icon"></span>
+            </button>
+        </div>
+    </nav>
 
-    <div class="info-box">
-      <h3>📋 What is LoveSpouse Gateway?</h3>
-      <p>ESP32 firmware that translates Lovense BLE protocol to control MuSE, LoveSpouse, and Leten toys.</p>
-      <ul>
-        <li>Works with XToys.app and buttplug.io</li>
-        <li>Supports multiple devices simultaneously</li>
-        <li>Graphical interface on CYD displays</li>
-      </ul>
-    </div>
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1 class="hero-title">LoveSpouse ESP32 Gateway</h1>
+            <p class="hero-subtitle">Lovense Protocol Translator for ESP32</p>
+            <p class="hero-description">Flash your ESP32 device directly from your browser to control MuSE, LoveSpouse, and Leten toys using the Lovense BLE protocol</p>
+            <div class="hero-cta">
+                <a href="#install" class="btn btn-primary">Flash Firmware</a>
+                <a href="https://github.com/N0rule/LoveSpouse-ESP32-Gateway" class="btn btn-secondary" target="_blank">View on GitHub</a>
+            </div>
+        </div>
+    </section>
 
-    <div class="info-box">
-      <h3>🔧 Supported Hardware</h3>
-      <div class="supported-devices">
-        <div class="device-badge">ESP32</div>
-        <div class="device-badge">ESP32-S3</div>
-        <div class="device-badge">CYD (ESP32)</div>
-      </div>
-    </div>
+    <!-- About Section -->
+    <section id="about" class="section section-alt">
+        <div class="container">
+            <h2 class="section-title">What is LoveSpouse Gateway?</h2>
+            <div class="info-grid">
+                <div class="info-card">
+                    <h3>Protocol Translation</h3>
+                    <p>Translates Lovense BLE protocol to control MuSE, LoveSpouse, and Leten toys seamlessly.</p>
+                </div>
+                <div class="info-card">
+                    <h3>Wide Compatibility</h3>
+                    <p>Works with popular platforms like XToys.app and buttplug.io for maximum flexibility.</p>
+                </div>
+                <div class="info-card">
+                    <h3>Multi-Device Support</h3>
+                    <p>Connect and control multiple devices simultaneously with a single ESP32 gateway.</p>
+                </div>
+            </div>
+        </div>
+    </section>
 
-    <div class="install-section">
-      <h3 style="margin-bottom: 15px;">Ready to install?</h3>
-      <p style="color: #666; margin-bottom: 20px;">Connect your ESP32 device via USB and click the button below</p>
-      <esp-web-install-button manifest="./esp-webtools-manifest.json">
-        <button slot="activate" style="
-          background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-          color: white;
-          border: none;
-          padding: 15px 40px;
-          font-size: 1.1em;
-          border-radius: 8px;
-          cursor: pointer;
-          font-weight: 600;
-          box-shadow: 0 4px 15px rgba(102, 126, 234, 0.4);
-          transition: transform 0.2s, box-shadow 0.2s;
-        " onmouseover="this.style.transform='translateY(-2px)'; this.style.boxShadow='0 6px 20px rgba(102, 126, 234, 0.6)'" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='0 4px 15px rgba(102, 126, 234, 0.4)'">
-          Install LoveSpouse Gateway
-        </button>
-      </esp-web-install-button>
-    </div>
+    <!-- Features Section -->
+    <section id="features" class="section">
+        <div class="container">
+            <h2 class="section-title">Features</h2>
+            <div class="info-grid">
+                <div class="info-card">
+                    <h3>Graphical Interface</h3>
+                    <p>Built-in display support for CYD (Cheap Yellow Display) devices with intuitive controls.</p>
+                    <ul>
+                        <li>Real-time device status</li>
+                        <li>Connection monitoring</li>
+                        <li>Touch controls</li>
+                    </ul>
+                </div>
+                <div class="info-card">
+                    <h3>Supported Hardware</h3>
+                    <p>Compatible with multiple ESP32 variants for flexible deployment options.</p>
+                    <div class="device-badges">
+                        <span class="device-badge">ESP32</span>
+                        <span class="device-badge">ESP32-S3</span>
+                        <span class="device-badge">CYD</span>
+                    </div>
+                </div>
+                <div class="info-card">
+                    <h3>Open Source</h3>
+                    <p>Fully open source project with active development and community support.</p>
+                    <ul>
+                        <li>MIT License</li>
+                        <li>Community contributions welcome</li>
+                        <li>Regular updates</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
 
-    <div class="footer">
-      <p>Open source project • <a href="https://github.com/n0rule/LoveSpouse-ESP32-Gateway" target="_blank">View on GitHub</a></p>
-    </div>
-  </div>
+    <!-- Install Section -->
+    <section id="install" class="section section-alt">
+        <div class="container">
+            <h2 class="section-title">Flash Firmware</h2>
+            <div class="install-container">
+                <h3>Ready to Install?</h3>
+                <p>Connect your ESP32 device via USB and click the button below to flash the firmware directly from your browser</p>
+                
+                <esp-web-install-button manifest="./esp-webtools-manifest.json">
+                    <button slot="activate" class="install-button">
+                        Install LoveSpouse Gateway
+                    </button>
+                </esp-web-install-button>
+
+                <div class="warning-box">
+                    <p><strong>Note:</strong> This requires a Chromium-based browser (Chrome, Edge, Opera) with Web Serial API support. Make sure your ESP32 is connected via USB before clicking install.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2026 N0rule. Open source project • <a href="https://github.com/N0rule/LoveSpouse-ESP32-Gateway" target="_blank">View on GitHub</a></p>
+        </div>
+    </footer>
 </body>
-
 </html>
